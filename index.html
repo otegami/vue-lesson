@@ -9,24 +9,24 @@
     <script src="vue.js"></script>
 
     <div id="app">
-      <button @click="ok = !ok">ボタン</button>
-      <!-- デメリット -->
-      <!-- display none で消すだけなので、template tag では使うことができない -->
-      <!-- v-else のように条件分岐することができない -->
-      <!-- 初期描画が遅いこと、全て表示してから表示非表示を切り分けてる -->
-      <p v-show="ok">OK</p>
-      <!-- デメリット -->
-      <!-- 一回ごとに要素を削除しているから処理が重い -->
-      <p v-if="ok">OK</p>
-      <!-- 結論 -->
-      <!-- 頻繁に切り替えるときは v-show　それ以外は v-if -->
+      <ul>
+        <li v-for="(fruit, index) in fruits">({{ index }}){{ fruit }}</li>
+      </ul>
+      <ol>
+        <li v-for="(value, key, index) in object">{{ index }}-{{ key }}: {{ value }}</li>
+      </ol>
     </div>
 
     <script>
       new Vue({
         el: '#app',
         data: {
-          ok: true
+          fruits: ['りんご', 'バナナ', 'ぶどう'],
+          object: {
+            firstName: 'Takuya',
+            lastName: 'Kodama',
+            age: 20
+          }
         }
       })
     </script>
