@@ -10,11 +10,18 @@
 
     <div id="app">
       <ul>
-        <li v-for="(fruit, index) in fruits">({{ index }}){{ fruit }}</li>
+        <li v-for="(fruit, index) of fruits">({{ index }}){{ fruit }}</li>
       </ul>
-      <ol>
-        <li v-for="(value, key, index) in object">{{ index }}-{{ key }}: {{ value }}</li>
-      </ol>
+      <ul>
+        <template v-for="fruit of fruits">
+          <li>{{ fruit }}</li>
+          <hr>
+        </template>
+      </ul>
+      <ul>
+        <!-- javascript の構文では イテレーターに対して of を使う -->
+        <li v-for="n of 10">{{ n }}</li>
+      </ul>
     </div>
 
     <script>
@@ -22,11 +29,6 @@
         el: '#app',
         data: {
           fruits: ['りんご', 'バナナ', 'ぶどう'],
-          object: {
-            firstName: 'Takuya',
-            lastName: 'Kodama',
-            age: 20
-          }
         }
       })
     </script>
