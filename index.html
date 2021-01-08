@@ -10,18 +10,14 @@
 
     <div id="app">
       <ul>
-        <li v-for="(fruit, index) of fruits">({{ index }}){{ fruit }}</li>
+        <!-- v-for は、効率よく最小の動きで変化させようとする -->
+        <!-- template は実際の dom としては表示されないので、key 属性を付与することができない -->
+        <div v-for="fruit in fruits" :key="fruit">
+          <p>{{ fruit }}</p>
+          <input type=text>
+        </div>
       </ul>
-      <ul>
-        <template v-for="fruit of fruits">
-          <li>{{ fruit }}</li>
-          <hr>
-        </template>
-      </ul>
-      <ul>
-        <!-- javascript の構文では イテレーターに対して of を使う -->
-        <li v-for="n of 10">{{ n }}</li>
-      </ul>
+      <button @click="remove">先頭を削除</button>
     </div>
 
     <script>
@@ -29,6 +25,11 @@
         el: '#app',
         data: {
           fruits: ['りんご', 'バナナ', 'ぶどう'],
+        },
+        methods: {
+          remove: function() {
+            this.fruits.shift()
+          }
         }
       })
     </script>
