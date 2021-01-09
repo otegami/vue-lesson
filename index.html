@@ -14,19 +14,38 @@
       <my-component></my-component>
     </div>
 
+    <div id="app2">
+      <my-component></my-component>
+      <my-component></my-component>
+      <my-component></my-component>
+    </div>
+
     <script>
       // Vue コンポーネントは、Vue 配下で使える
+      // data をオブジェクトにしてしまうと、同じ component で値を共有してしまう
+      // だから関数を利用して data を定義している
+      // data は、その componnt の初期値を渡してあげてね
       Vue.component('my-component', {
-        data: () => {
+        data() {
           return {
-            number: 12,
+            number: 12
           }
         },
-        template: '<p>いいね({{ number }})</p>'
+        template: '<p>いいね({{ number }})<button @click="increment">+1</button></p>',
+        // methods はオブジェクトで良いのか、共通して利用しても問題ないため
+        methods: {
+          increment() {
+            this.number += 1
+          }
+        }
       })
 
       new Vue({
         el: '#app',
+      })
+
+      new Vue({
+        el: '#app2',
       })
 
     </script>
