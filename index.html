@@ -17,6 +17,11 @@
 
     <div id="app2"></div>
     <div id="app3"></div>
+    <div id="app4">
+      <h1>こんにちは、{{ name }}</h1>
+      <button @click="name= 'otegami'">名前を変更</button>
+      <button @click="destroy">インスタンスを破壊</button>
+    </div>
 
     <script>
       const data = {
@@ -76,6 +81,43 @@
       // オブジェクトを比較して違う部分だけの dom だけを作成する
       // $mount は、作られた仮想 dom を実際の dom に変更している
 
+      // Vue インスタンスライフサイクルとは？
+
+      new Vue({
+        el: '#app4',
+        data: {
+          name: 'おてがみ',
+        },
+        beforeCreate: function() {
+          console.log('beforeCreates')
+        },
+        created: function() {
+          console.log('Created')
+        },
+        beforeMount: function() {
+          console.log('beforeMount')
+        },
+        mounted: function() {
+          console.log('mounted')
+        },
+        beforeUpdate: function() {
+          console.log('beforeUpdated')
+        },
+        updated: function() {
+          console.log('updated')
+        },
+        beforeDestroy: function() {
+          console.log('beforeDestroy')
+        },
+        destroyed: function() {
+          console.log('destroyed')
+        },
+        methods: {
+          destroy: function() {
+            this.$destroy()
+          }
+        }
+      })
 
     </script>
   </body>
