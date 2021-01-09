@@ -11,23 +11,36 @@
     <div id="app">
       <p>{{ message }}</p>
       <p>{{ name }}</p>
+      <p>{{ myData }}</p>
       <button @click="name = 'ボタンから変更'">変更</button>
     </div>
 
+    <div id="app2"></div>
+
     <script>
+      const data = {
+        message: 'こんにちは！',
+        name: 'おてがみ',
+      }
 
       const vm = new Vue({
-        el: '#app',
-        data: {
-          message: 'こんにちは！',
-        },
+        data: data,
+        computed: {
+          myData: function() {
+            return this.$data
+          }
+        }
       })
 
-      // 外から設定したプロパティはリアクティブにならない
-      // インスタンス作成時にプロパティに記述されている要素には、getter setter を用意してくれている
-      // 後からプロパテイィを追加しても、リアクティブにならない
-      vm.name = 'おてがみ'
-      console.log(vm);
+      // 後から el プロパティを追加したい
+      vm.$mount('#app')
+
+      new Vue({
+        data: {
+          name: 'よしぴー'
+        },
+        template: '<h1>こんにちは、{{ name }}</h1>'
+      }).$mount('#app2')
 
     </script>
   </body>
