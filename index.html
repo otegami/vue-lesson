@@ -21,11 +21,7 @@
     </div>
 
     <script>
-      // Vue コンポーネントは、Vue 配下で使える
-      // data をオブジェクトにしてしまうと、同じ component で値を共有してしまう
-      // だから関数を利用して data を定義している
-      // data は、その componnt の初期値を渡してあげてね
-      Vue.component('my-component', {
+      const component = {
         data() {
           return {
             number: 12
@@ -38,10 +34,13 @@
             this.number += 1
           }
         }
-      })
+      }
 
       new Vue({
         el: '#app',
+        components:{
+          'my-component': component
+        } 
       })
 
       new Vue({
