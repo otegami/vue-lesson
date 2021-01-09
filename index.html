@@ -21,6 +21,9 @@
       <h1>こんにちは、{{ name }}</h1>
       <button @click="name= 'otegami'">名前を変更</button>
       <button @click="destroy">インスタンスを破壊</button>
+      <hello></hello>
+      <hello></hello>
+      <hello></hello>
     </div>
 
     <script>
@@ -28,6 +31,10 @@
         message: 'こんにちは！',
         name: 'おてがみ',
       }
+
+      Vue.component('hello', {
+        template: '<p>こんにちは</p>'
+      })
 
       const vm = new Vue({
         data: data,
@@ -117,6 +124,11 @@
             this.$destroy()
           }
         }
+      })
+
+      new Vue({
+        el: 'hello',
+        template: '<p>こんにちは！</p>'
       })
 
     </script>
