@@ -8,39 +8,27 @@
   <body>
     <script src="vue.js"></script>
 
-    <div id="app1">
+    <div id="app">
       <p>{{ message }}</p>
-    </div>
-
-    <div id="app2">
-      <p>{{ message }}</p>
-      <button @click="changeMessage1">インスタンス1 の message を変更</button>
+      <p>{{ name }}</p>
+      <button @click="name = 'ボタンから変更'">変更</button>
     </div>
 
     <script>
-      // 基本的には使わない方が良いです
-      // ＊完全にインスタンスが分離されているときは使っても良いかもしれない
-      let vm1 = new Vue({
-        el: '#app1',
+
+      const vm = new Vue({
+        el: '#app',
         data: {
-          message: 'インスタンス1'
+          message: 'こんにちは！',
         },
       })
 
-      // 外側からインスタンスにアクセスしたいときはどうやるの？
-      // vm1.message = "書き変えられました"
+      // 外から設定したプロパティはリアクティブにならない
+      // インスタンス作成時にプロパティに記述されている要素には、getter setter を用意してくれている
+      // 後からプロパテイィを追加しても、リアクティブにならない
+      vm.name = 'おてがみ'
+      console.log(vm);
 
-      let vm2 = new Vue({
-        el: '#app2',
-        data: {
-          message: 'インスタンス2'
-        },
-        methods: {
-          changeMessage1: function() {
-            vm1.message = 'インスタンス2から変えました！'
-          }
-        }
-      })
     </script>
   </body>
 </html>
