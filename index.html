@@ -16,6 +16,7 @@
     </div>
 
     <div id="app2"></div>
+    <div id="app3"></div>
 
     <script>
       const data = {
@@ -37,10 +38,34 @@
 
       new Vue({
         data: {
-          name: 'よしぴー'
+          name: 'おてがみ'
         },
         template: '<h1>こんにちは、{{ name }}</h1>'
       }).$mount('#app2')
+
+      new Vue({
+        data: {
+          name: 'おてがみ'
+        },
+        // 仮想 dom を利用するときに h がよく利用される
+        render: function(h){
+          // 仮想 node は dom 要素ではなくて、オブジェクトを作っているだけ
+          // h は、createElement とかかれることが多い
+          // createElement が仮想 dom を作るために node を返してる
+          // Vue.js が仮想 dom を受け取って、それを dom にしている？
+          console.log(h('h1', 'こんにちは、' + this.name))
+          return h('h1', 'こんにちは、' + this.name)
+        }
+      }).$mount('#app3')
+
+      // これは実際 dom(document object model) 要素を作っている
+      // document 
+        // => ブラウザが html を受け取って object にしたもの
+        // これは直接 dom にアクセスしている
+      const dir = document.createElement('div')
+      console.log(dir)
+      console.log(document)
+      console.dir(document)
 
     </script>
   </body>
