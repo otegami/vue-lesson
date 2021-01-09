@@ -53,6 +53,7 @@
           // h は、createElement とかかれることが多い
           // createElement が仮想 dom を作るために node を返してる
           // Vue.js が仮想 dom を受け取って、それを dom にしている？
+          // 仮想 dom とは、dom 要素をもしたオブジェクトです。
           console.log(h('h1', 'こんにちは、' + this.name))
           return h('h1', 'こんにちは、' + this.name)
         }
@@ -66,6 +67,15 @@
       console.log(dir)
       console.log(document)
       console.dir(document)
+
+      // なぜ仮想 dom が必要なの？
+      // - dom の直接操作は、かなり遅い
+      // 新しい dom を作って比較して違うところのみを更新する
+        // - そもそも作るのに時間がかかる
+      // js が自身のオブジェクトにアクセスするのは早いよね
+      // オブジェクトを比較して違う部分だけの dom だけを作成する
+      // $mount は、作られた仮想 dom を実際の dom に変更している
+
 
     </script>
   </body>
