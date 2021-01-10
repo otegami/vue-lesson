@@ -1,3 +1,23 @@
 <template>
-  <h1>トータルのいいね数</h1>
+  <div>
+    <!-- slot は、html のテンプレートを全て送ることができる -->
+    <slot></slot>
+    <p>{{ headerText }}</p>
+  </div>
 </template>
+
+<script>
+export default {
+  props: {
+    headerText: {
+      type: String
+    }
+  },
+}
+</script>
+
+<style scoped>
+  h1 {
+    color: red
+  }
+</style>

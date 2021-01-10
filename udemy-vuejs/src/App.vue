@@ -1,7 +1,9 @@
 <template>
   <div>
-    <likeHeader></likeHeader>
-    <h2>{{ number }}</h2>
+    <likeHeader header-text="hello">
+      <h1>トータルのいいね数</h1>
+      <h2>{{ number }}</h2>
+    </likeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber($event)"></LikeNumber>
     <LikeNumber :total-number="number"></LikeNumber>
   </div>
@@ -28,5 +30,8 @@ export default {
 <style scoped>
   div {
     border: 1px solid blue
+  }
+  h1 {
+    color: blue
   }
 </style>
