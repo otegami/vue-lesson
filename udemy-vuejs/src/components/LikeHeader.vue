@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- slot は、html のテンプレートを全て送ることができる -->
-    <slot></slot>
+    <slot>
+      <h2>デフォルトのタイトル</h2>
+    </slot>
     <p>{{ headerText }}</p>
   </div>
 </template>
