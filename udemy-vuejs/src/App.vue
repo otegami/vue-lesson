@@ -1,7 +1,9 @@
 <template>
   <div>
     <likeHeader></likeHeader>
-    <LikeNumber></LikeNumber>
+    <h2>{{ number }}</h2>
+    <LikeNumber :total-number="number" v-on:my-click="incrementNumber"></LikeNumber>
+    <LikeNumber :total-number="number"></LikeNumber>
   </div>
 </template>
 
@@ -9,7 +11,17 @@
 import LikeHeader from "./components/LikeHeader.vue"
 
 export default {
-  components: { LikeHeader }
+  data() {
+    return {
+      number: 14
+    }
+  },
+  components: { LikeHeader },
+  methods: {
+    incrementNumber(value) {
+      this.value = value
+    }
+  }
 }
 </script>
 
