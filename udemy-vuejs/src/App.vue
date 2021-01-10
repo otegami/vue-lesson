@@ -1,8 +1,11 @@
 <template>
   <div>
-    <likeHeader header-text="hello">
-      <!-- <h1>トータルのいいね数</h1>
-      <h2>{{ number }}</h2> -->
+    <likeHeader header-text="hello" v-slot="slotProps">
+      <!-- template で指定されている slot 以外をデフォルト slot として渡す -->
+      <p>{{ slotProps }}</p>
+      <h2>みなさん</h2>
+      <h3>初めまして</h3>
+      <p>よろしくお願いします</p>
     </likeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber($event)"></LikeNumber>
     <LikeNumber :total-number="number"></LikeNumber>
