@@ -1,28 +1,30 @@
 <template>
   <div>
-    <likeHeader #default="slotProps">
-      <!-- template で指定されている slot 以外をデフォルト slot として渡す -->
-      <p>{{ slotProps }}</p>
-      <h2>みなさん</h2>
+    <LikeHeader>
       <h3>初めまして</h3>
-      <p>よろしくお願いします</p>
-    </likeHeader>
+    </LikeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber($event)"></LikeNumber>
-    <LikeNumber :total-number="number"></LikeNumber>
+    <button @click="currentComponent = 'Home'">Home</button>
+    <button @click="currentComponent = 'About'">About</button>
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import LikeHeader from "./components/LikeHeader.vue"
+import About from "./components/About.vue"
+import Home from "./components/Home.vue"
 
 export default {
   data() {
     return {
       number: 14,
-      title: "title"
+      currentComponent: "Home"
     }
   },
-  components: { LikeHeader },
+  components: { LikeHeader, About, Home },
   methods: {
     incrementNumber(value) {
       this.number = value

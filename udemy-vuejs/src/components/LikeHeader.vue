@@ -1,10 +1,6 @@
 <template>
   <div>
-    <!-- slot は、html のテンプレートを全て送ることができる -->
-    <slot :user="user"></slot>
-    <hr>
-    <p>いいねの数</p>
-    <slot name="number"></slot>
+    <slot></slot>
   </div>
 </template>
 
