@@ -1,6 +1,6 @@
 <template>
   <div>
-    <likeHeader header-text="hello" v-slot="slotProps">
+    <likeHeader #default="slotProps">
       <!-- template で指定されている slot 以外をデフォルト slot として渡す -->
       <p>{{ slotProps }}</p>
       <h2>みなさん</h2>
@@ -18,7 +18,8 @@ import LikeHeader from "./components/LikeHeader.vue"
 export default {
   data() {
     return {
-      number: 14
+      number: 14,
+      title: "title"
     }
   },
   components: { LikeHeader },
