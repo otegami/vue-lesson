@@ -5,6 +5,10 @@
       <button @click="myAnimation = 'fade'">Fade</button>
     </div>
     <button @click="show = !show">切り替え</button>
+    <transition name="fade" mode="out-in">
+      <p v-if="show" key="hey">さよなら</p>
+      <p v-else key="bye">こんにちは</p>
+    </transition>
     <transition 
       enter-active-class="animate__animated animate__bounce"
       leave-active-class="animate__animated animate__shakeX"
